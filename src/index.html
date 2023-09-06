@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta
+      name="description"
+      content="DevFinder allows users to search for GitHub profiles by username. Simply enter a username and DevFinder will display the associated GitHub profile information. Built with React, DevFinder retrieves profile data from the GitHub API and displays key details like name, bio, followers, repositories, etc. Try searching for any GitHub user now!
+
+    " />
+    <link
+      rel="shortcut icon"
+      href="assets/images/github-mark.png"
+      type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="style/main.css" />
+    <script defer type="module" src="script/index.js"></script>
+    <title>DevFinder</title>
+  </head>
+  <body>
+    <main class="container">
+      <div class="mode">
+        <label class="switch">
+          <p class="mode__text">light</p>
+          <input checked="checked" type="checkbox" id="mode__input" />
+          <svg
+            viewBox="0 0 384 512"
+            height="1em"
+            xmlns="http://www.w3.org/2000/svg"
+            class="moon">
+            <path
+              d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"></path>
+          </svg>
+          <svg
+            viewBox="0 0 512 512"
+            height="1em"
+            xmlns="http://www.w3.org/2000/svg"
+            class="sun">
+            <path
+              d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"></path>
+          </svg>
+        </label>
+      </div>
+      <form class="search">
+        <svg
+          class="search__icon"
+          width="34"
+          height="34"
+          viewBox="0 0 16 16"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+            fill="#0ea5e9"
+            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0a5.5 5.5 0 0 1 11 0z" />
+        </svg>
+        <input
+          type="text"
+          id="username"
+          class="search__input"
+          placeholder="Search Github username..."
+          autocomplete="off" />
+        <button class="search__btn">Search</button>
+      </form>
+      <figure class="profile">
+        <div class="profile__image-container">
+          <img
+            src="assets/images/github-mark-white.png"
+            alt="github profile image"
+            class="profile__image" />
+        </div>
+        <div class="profile__info">
+          <h4 class="profile__name">Full Name</h4>
+          <h5 class="profile__username">@username</h5>
+          <p class="profile__bio">this profile has no bio</p>
+        </div>
+        <p class="profile__date">joined -- -- ----</p>
+        <ul class="profile__stats">
+          <li class="profile__stat">
+            <p class="profile__stat--title">Repos</p>
+            <p class="profile__stat--data repos-number">-</p>
+          </li>
+          <li class="profile__stat">
+            <p class="profile__stat--title">Followers</p>
+            <p class="profile__stat--data followers-number">----</p>
+          </li>
+          <li class="profile__stat">
+            <p class="profile__stat--title">Following</p>
+            <p class="profile__stat--data following-number">--</p>
+          </li>
+        </ul>
+        <div class="profile__socials">
+          <div class="profile__social">
+            <div class="profile__social--icon">
+              <svg
+                width="30"
+                height="30"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  fill="#ffffff"
+                  d="M12 11.5A2.5 2.5 0 0 1 9.5 9A2.5 2.5 0 0 1 12 6.5A2.5 2.5 0 0 1 14.5 9a2.5 2.5 0 0 1-2.5 2.5M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Z" />
+              </svg>
+            </div>
+            <div class="profile__social--text" id="location">Location</div>
+          </div>
+          <div class="profile__social">
+            <div class="profile__social--icon">
+              <svg
+                width="30"
+                height="30"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <g fill="#ffffff">
+                  <path
+                    d="M15.729 3.884c1.434-1.44 3.532-1.47 4.693-.304c1.164 1.168 1.133 3.28-.303 4.72l-2.423 2.433a.75.75 0 0 0 1.062 1.059l2.424-2.433c1.911-1.919 2.151-4.982.303-6.838c-1.85-1.857-4.907-1.615-6.82.304L9.819 7.692c-1.911 1.919-2.151 4.982-.303 6.837a.75.75 0 1 0 1.063-1.058c-1.164-1.168-1.132-3.28.303-4.72l4.848-4.867Z" />
+                  <path
+                    d="M14.485 9.47a.75.75 0 0 0-1.063 1.06c1.164 1.168 1.133 3.279-.303 4.72l-4.847 4.866c-1.435 1.44-3.533 1.47-4.694.304c-1.164-1.168-1.132-3.28.303-4.72l2.424-2.433a.75.75 0 0 0-1.063-1.059l-2.424 2.433c-1.911 1.92-2.151 4.982-.303 6.838c1.85 1.858 4.907 1.615 6.82-.304l4.847-4.867c1.911-1.918 2.151-4.982.303-6.837Z" />
+                </g>
+              </svg>
+            </div>
+            <a
+              target="_blank"
+              href="#"
+              class="profile__social--text profile__link unavailable"
+              id="website"
+              >https://website.com</a
+            >
+          </div>
+          <div class="profile__social">
+            <div class="profile__social--icon">
+              <svg
+                width="30"
+                height="30"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  fill="#ffffff"
+                  d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584l-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
+              </svg>
+            </div>
+            <div class="profile__social--text" id="twitter">@twitter</div>
+          </div>
+          <div class="profile__social">
+            <div class="profile__social--icon">
+              <svg
+                width="30"
+                height="30"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  fill="#000000"
+                  d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33c.85 0 1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z" />
+              </svg>
+            </div>
+            <a
+              target="_blank"
+              href="#"
+              class="profile__social--text profile__link unavailable"
+              id="url">
+              https://github.com/username
+            </a>
+          </div>
+        </div>
+        <div class="spinner hidden">
+          <div class="loading-wave">
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+          </div>
+        </div>
+      </figure>
+    </main>
+  </body>
+</html>
